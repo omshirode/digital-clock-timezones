@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock - Global Timezones</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- LANDING PAGE -->
+        <div id="view-landing" class="view active">
+            <div class="header">
+                <h1>🕐 Global Timezone Clock</h1>
+                <p class="subtitle">View time across 400+ world timezones</p>
+            </div>
+
+            <div class="search-wrapper">
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    placeholder="Search timezone (e.g., New York, Tokyo)..."
+                />
+                <button class="search-btn">🔍</button>
+            </div>
+
+            <div class="welcome-message">
+                <p>👉 Click buttons to explore!</p>
+            </div>
+
+            <div class="navigation">
+                <button class="nav-btn" onclick="showView('view-search')">
+                    🔍 Search 400+ Timezones
+                </button>
+                <button class="nav-btn" onclick="showView('view-world-map')">
+                    🌍 View 24 Major Cities
+                </button>
+                <button class="nav-btn" onclick="showView('view-clock')">
+                    🕐 View Single Clock
+                </button>
+            </div>
+        </div>
+
+        <!-- SEARCH PAGE -->
+        <div id="view-search" class="view">
+            <div class="header">
+                <h1>🔍 Search Timezones</h1>
+                <p class="subtitle">Filter from 400+ timezones worldwide</p>
+            </div>
+
+            <div style="position: relative; max-width: 600px; margin: 0 auto;">
+                <div class="search-wrapper">
+                    <input 
+                        type="text" 
+                        class="search-input" 
+                        id="searchInput" 
+                        placeholder="Search timezone..." 
+                        onkeyup="filterTimezones()" 
+                        autofocus
+                    />
+                    <button class="search-btn">🔍</button>
+                </div>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <div id="dropdownList"></div>
+                </div>
+                <div class="stats" id="searchStats">Type to search...</div>
+            </div>
+
+            <div class="navigation">
+                <button class="nav-btn" onclick="showView('view-landing')">← Back</button>
+                <button class="nav-btn" onclick="showView('view-clock')">Clock Display →</button>
+            </div>
+        </div>
+
+        <!-- WORLD MAP PAGE -->
+        <div id="view-world-map" class="view">
+            <div class="header">
+                <h1>🌍 24 Major World Cities</h1>
+                <p class="subtitle">Real-time clocks globally</p>
+            </div>
+            <div class="clocks-grid" id="worldClocksGrid"></div>
+
+            <div class="navigation">
+                <button class="nav-btn" onclick="showView('view-landing')">← Back</button>
+                <button class="nav-btn" onclick="showView('view-search')">Search Timezones →</button>
+            </div>
+        </div>
+
+        <!-- CLOCK PAGE -->
+        <div id="view-clock" class="view">
+            <div class="header">
+                <h1>🕐 Clock Display</h1>
+                <p class="subtitle">Current time for selected timezone</p>
+            </div>
+
+            <div class="search-wrapper">
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    placeholder="Search timezone..." 
+                    value="America/New_York"
+                />
+                <button class="search-btn">🔍</button>
+            </div>
+
+            <div class="main-clock-section">
+                <div class="main-clock">
+                    <div class="timezone-name">America/New_York</div>
+                    <div class="digital-time" id="clock-main">14:35:42</div>
+                    <div class="date" id="date-main">Wednesday, June 24, 2026</div>
+                    <div class="offset" id="offset-main">UTC-4</div>
+                </div>
+                <button class="favorite-btn" onclick="toggleFavorite()">⭐ Add to Favorites</button>
+            </div>
+
+            <div class="navigation">
+                <button class="nav-btn" onclick="showView('view-landing')">← Back</button>
+                <button class="nav-btn" onclick="showView('view-world-map')">World Map →</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
